@@ -1,10 +1,12 @@
 package com.example.user.simpleui;
 
+import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
@@ -14,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
     EditText editText;
     RadioGroup radioGroup;
 
-    String selectedSex = "male";
+    String selectedTea = "Black Tea";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,14 +44,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId)
             {
-                if (checkedId == R.id.MaleradioButton)
-                {
-                    selectedSex = "Male";
-                }
-                else if (checkedId == R.id.FemalradioButton)
-                {
-                    selectedSex = "Female";
-                }
+                RadioButton radioButton = (RadioButton)group.findViewById(checkedId);
+                selectedTea = radioButton.getText().toString();
             }
         });
     }
@@ -58,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
     {
         String text = editText.getText().toString();
 
-        text = text + "   Gender:" + selectedSex;
+
 
         textView.setText(text);
 
