@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
     {
         /*String[] data = new String[]{"Black Tea", "Green Tea", "1", "2", "3", "4", "5"};
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, data);*/
-        OrderAdapter adapter = new OrderAdapter(this, orders);
+        OrderAdapter adapter = new OrderAdapter(this, orders    );
         listView.setAdapter(adapter);
     }
 
