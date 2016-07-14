@@ -1,8 +1,10 @@
 package com.example.user.simpleui;
 
+import android.content.Intent;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -60,6 +62,8 @@ public class MainActivity extends AppCompatActivity {
         });
         setupListView();
         setupSpinner();
+
+        Log.d("Debug", "MainActivity OnCreate");
     }
 
 
@@ -83,18 +87,64 @@ public class MainActivity extends AppCompatActivity {
         String text = editText.getText().toString();
 
 
-
-        textView.setText(text);
-
-        editText.setText("");
-
         Order order = new Order();
         order.note = text;
         order.drinkName = selectedTea;
         order.storeInfo = (String)spinner.getSelectedItem();
 
         orders.add(order);
+        setupListView();
 
+        textView.setText(text);
+
+        editText.setText("");
+
+
+
+    }
+
+    public void goToMenu(View view)
+    {
+        Intent intent = new Intent();
+        intent.setClass(this, DrinkMenuActivity.class);
+        startActivity(intent);
+    }
+
+    @Override
+    protected void onStart(){
+        super.onStart();
+        Log.d("Debug", "MainActivity OnStart");
+
+    }
+    @Override
+    protected void onResume(){
+        super.onResume();
+        Log.d("Debug", "MainActivity OnResume");
+
+    }
+    @Override
+    protected  void onPause(){
+        super.onPause();
+        Log.d("Debug", "MainActivity OnPause");
+
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.d("Debug", "MainActivity OnStop");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.d("Debug", "MainActivity OnDestroy");
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Log.d("Debug", "MainActivity OnRestart");
 
     }
 }
